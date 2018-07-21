@@ -1,0 +1,82 @@
+/* ==========================================================================
+FORM CSS
+========================================================================== */
+input[type="text"],input[type="password"],input[type="email"],input[type="url"],input[type="date"],input[type="month"],input[type="time"],input[type="datetime"],input[type="datetime-local"],input[type="week"],input[type="number"],input[type="search"],input[type="tel"],select{background:#fff;border:1px solid rgba(0,0,0,0.12);border-radius:4px;color:rgba(0,0,0,0.8);display:inline-block;padding:4px;vertical-align:middle}
+input[type="color"]{background:#fff;border:1px solid rgba(0,0,0,0.12);border-radius:4px;display:inline-block;vertical-align:middle}
+input:not([type]){-webkit-appearance:none;background-clip:padding-box;border:1px solid rgba(0,0,0,0.12);border-radius:4px;display:inline-block;padding:8px;text-align:left}
+input[type="text"]:focus,input[type="password"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="date"]:focus,input[type="month"]:focus,input[type="time"]:focus,input[type="datetime"]:focus,input[type="datetime-local"]:focus,input[type="week"]:focus,input[type="number"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="color"]:focus,select:focus,textarea:focus{border-color:#2196f3}
+input:not([type]):focus{border-color:#2196f3}
+input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus{outline:1px thin rgba(0,0,0,0.12)}
+input[type="text"][disabled],input[type="password"][disabled],input[type="email"][disabled],input[type="url"][disabled],input[type="date"][disabled],input[type="month"][disabled],input[type="time"][disabled],input[type="datetime"][disabled],input[type="datetime-local"][disabled],input[type="week"][disabled],input[type="number"][disabled],input[type="search"][disabled],input[type="tel"][disabled],input[type="color"][disabled],select[disabled],textarea[disabled]{background-color:rgba(0,0,0,0.12);color:rgba(0,0,0,0.54);cursor:not-allowed}
+input:not([type])[disabled]{background-color:rgba(0,0,0,0.12);color:rgba(0,0,0,0.54);cursor:not-allowed}
+input[readonly],select[readonly],textarea[readonly]{border-color:rgba(0,0,0,0.12);color:rgba(0,0,0,0.54)}
+input:focus:invalid,textarea:focus:invalid,select:focus:invalid{border-color:#ea1c0d;color:#f44336}
+input[type="file"]:focus:invalid:focus,input[type="radio"]:focus:invalid:focus,input[type="checkbox"]:focus:invalid:focus{outline-color:#f44336}
+select{-webkit-appearance:menulist-button;border:1px solid rgba(0,0,0,0.12);vertical-align:sub}
+select[multiple]{height:auto}
+label{line-height:2}
+fieldset{border:0;margin:0;padding:8px 0}
+legend{border-bottom:1px solid rgba(0,0,0,0.12);color:rgba(0,0,0,0.8);display:block;margin-bottom:8px;padding:8px 0;width:100%}
+textarea{background:#fff;border:1px solid rgba(0,0,0,0.12);border-radius:4px;display:block;margin-bottom:8px;max-width:100%;padding:8px;vertical-align:middle}
+input[type=submit],input[type=reset],button{background:#2196f3;border:1px solid rgba(0,0,0,0.12);border-radius:4px;color:#fff;cursor:pointer;display:inline-block;margin:0;padding:8px 16px;text-align:center;vertical-align:middle;white-space:nowrap}
+input[type=submit]::-moz-focus-inner,input[type=reset]::-moz-focus-inner,button::-moz-focus-inner{padding:0}
+input[type=submit]:hover,input[type=reset]:hover,button:hover{background:#0c7cd5;border-color:1px solid rgba(0,0,0,0.54)}
+input[type=submit]:active,input[type=reset]:active,button:active{background:#0c7cd5;border-color:1px solid rgba(0,0,0,0.54);box-shadow:inset 0 0 4px 0 rgba(0,0,0,0.2);outline-offset:-2px}
+input[type=submit]:focus,input[type=reset]:focus,button:focus{background:#0c7cd5;border-color:1px solid rgba(0,0,0,0.54);box-shadow:inset 0 0 4px 0 rgba(0,0,0,0.2);outline:0}
+input[type=submit]:disabled,button:disabled{background:rgba(0,0,0,0.12);color:rgba(0,0,0,0.38);cursor:not-allowed}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

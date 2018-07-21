@@ -1,0 +1,45 @@
+[
+    {
+        "id": "100016865703374",
+        "name": "Riedayme",
+        "token": "EAAAAAYsX7TsBANydmTZCgjVy3GgZBZAAGQLs22RlSJKOd7ZCjL9wTxoykWUettQZCvckpHKvyxVfeO0ukOa8OHKDZAprR7o5XR6qEE6HvMZAxfvptaZArmcZCeFZAZAqSOwwy2wCd0V0OPa55sHmx9Va3BDKlOUeJKTN6Dm6mZA7ZBjna5T6352y43ZABZC5L1eSTLARnM0eBvvbQ1elS7zCDe4ZCZBOB",
+        "botreaction": "",
+        "botpostgroup": {
+            "status": "Aktif",
+            "postmessage": "{hai|hallo|hei hei|ok} {semuanya|kawan-kawan|anggota group} {bagaimana kabarnya|bagaimana keadaanmu sekarang|apakah kalian sehat} ?",
+            "group": [
+                "1844141609239985"
+            ],
+            "jam": "08",
+            "pesan": "Aktif",
+            "lastrun": "15-07-2018 09:43:03"
+        }
+    },
+    {
+        "id": "100022866621555",
+        "name": "Reikerimo",
+        "token": "EAAAAAYsX7TsBAKP9ZBWKZBoZA2ZCukOBTcjILM2vLsnguNa7pBhcVT5WQEzuwH3bYHZBrvQM9euZAA2nlvNTS0tsmZCVAZCTr0kgZC50NDHakHJgyl4rC4xzZCNxSLJ22bG9GbfCo1NtzMd5RCoJnPcScrsq3w9yApIV0Eaef3xsG1ypwHLUrFWBdNADwZAOA65yUMTOxVqfQFrTVnKmkHXepP1",
+        "botreaction": {
+            "status": "Aktif",
+            "reaction": "WOW",
+            "maxprocess": "1",
+            "pesan": "Aktif",
+            "lastrun": "15-07-2018 09:53:43"
+        },
+        "botpostgroup": ""
+    },
+    {
+        "id": "100012436637902",
+        "name": "Muhamad Irfan",
+        "token": "EAAAAAYsX7TsBAGdLFyNOOB6cYcshUbBklfpK52snUlk3VHx4Q14Vk0K02F4FaHyxBMaHdT4wLRhOay4UbAsd6QWVpibDZBRZBpx23v4tHu2IZB2yd1B8YyZCwe2Hx6idRpRZBAa3CmM8lLVbYdHLXo0RqjVVrzPxCLTVyyZBPsgZCjQyjhlhpZCdZBZArpJ5s3BBZAztpMfZAORZBdW78Ld5bwJOW",
+        "botreaction": "",
+        "botpostgroup": ""
+    },
+    {
+        "id": "100011181791254",
+        "name": "Namidahami",
+        "token": "EAAAAAYsX7TsBAK2kZBBKOT04L0fwgzRg4LWBi6GJacO7tkbDrcsZA7GZAZBZAUduge5qRmGemhToVmbW7lcRaUi1dmLrHZCZC1rgZAWLFUAr2wJPsjxzCcooZBgEUtF4qDQn9pLhijAPtKPd2E4Mq4zZBx6e22dcgqiWGR92vxL3qWPqdUZAQcpFbRjYZBecDXrfMqLrZBw5xDbZAvObXdkZCAQYYaZC",
+        "botreaction": "",
+        "botpostgroup": ""
+    }
+]
