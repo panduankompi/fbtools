@@ -149,12 +149,18 @@ include "config/settings.php";
 								Mass Leave Group
 							</a>
 						</li> 
-						<!-- <li class="waves-block waves-effect">
-							<a href="?module=scrapeuid">
+						<li class="waves-block waves-effect">
+							<a href="?module=massdeletepostgroup">
 								<i class="icon icon-lg icon-plus"></i>
-								Scrape UID
+								Mass Delete Post Group
 							</a>
-						</li>  -->
+						</li> 
+						<li class="waves-block waves-effect">
+							<a href="?module=masscomment">
+								<i class="icon icon-lg icon-plus"></i>
+								Mass Comment
+							</a>
+						</li> 
 						<li class="waves-block waves-effect">
 							<a href="?module=profileguard">
 								<i class="icon icon-lg icon-plus"></i>
@@ -288,8 +294,12 @@ include "config/settings.php";
 						include "module/massleavegroup/index.php";
 						break;
 
-						case 'scrapeuid':
-						include "module/scrapeuid/index.php";
+						case 'massdeletepostgroup':
+						include "module/massdeletepostgroup/index.php";
+						break;
+
+						case 'masscomment':
+						include "module/masscomment/index.php";
 						break;
 
 						case 'profileguard':

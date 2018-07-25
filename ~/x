@@ -1,3 +1,5 @@
+https://stackoverflow.com/questions/42147687/facebook-graph-api-in-workplace-group-post-with-mentioning-users
+
 https://graph.facebook.com/me/friends/100027396844279?method=post&access_token=EAAAAAYsX7TsBAKP9ZBWKZBoZA2ZCukOBTcjILM2vLsnguNa7pBhcVT5WQEzuwH3bYHZBrvQM9euZAA2nlvNTS0tsmZCVAZCTr0kgZC50NDHakHJgyl4rC4xzZCNxSLJ22bG9GbfCo1NtzMd5RCoJnPcScrsq3w9yApIV0Eaef3xsG1ypwHLUrFWBdNADwZAOA65yUMTOxVqfQFrTVnKmkHXepP1
 
 https://graph.facebook.com/me/friends/{$uid}?method=delete&access_token={$token}

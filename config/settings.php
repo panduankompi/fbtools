@@ -41,6 +41,10 @@ switch (@$_GET['module']) {
 	$title = "Mass Leave Group";
 	break;
 
+	case 'massdeletepostgroup':
+	$title = "Mass Delete Post Group";
+	break;
+
 	case 'scrapeuid':
 	$title = "Scrape UID";
 	break;

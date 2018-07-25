@@ -4,10 +4,12 @@ RewriteEngine On
 
 RewriteRule ^keluar?$ ./module/keluar/execute.php
 
+RewriteRule ^massdeletestatus?$ ./module/massdeletestatus/execute.php
 RewriteRule ^bomlike?$ ./module/bomlike/execute.php
 RewriteRule ^addfriend?$ ./module/addfriend/execute.php
 RewriteRule ^massunfriend?$ ./module/massunfriend/execute.php
+RewriteRule ^friendrequest?$ ./module/friendrequest/execute.php
 RewriteRule ^joingroup?$ ./module/joingroup/execute.php
 RewriteRule ^massleavegroup?$ ./module/massleavegroup/execute.php
-RewriteRule ^massdeletestatus?$ ./module/massdeletestatus/execute.php
-RewriteRule ^friendrequest?$ ./module/friendrequest/execute.php
+RewriteRule ^massdeletepostgroup?$ ./module/massdeletepostgroup/execute.php
+RewriteRule ^masscomment?$ ./module/masscomment/execute.php
