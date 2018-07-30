@@ -1,19 +1,6 @@
-<?php include "config/limit.php"; ?>
-
-<h3 class="post-title">
-	Confirm Friend Request
-</h3>
-<div class="post-meta">
-	<span>
-		Pilih Orang yang ingin dijadikan teman atau anda tolak
-	</span>            
-</div>
-
-<div class="post-content">
-
-	<!-- content -->
-	<form class='formtablecheckbox' method="post">
-		<br/><label>Pilih Orang : </label><br/>
+<form class='formtablecheckbox' method="post">
+	<div class="form-group">
+		<label>Pilih Orang : </label>
 		<table class="tablecheckbox">
 			<thead>
 				<tr>
@@ -27,7 +14,7 @@
 			</thead>
 			<tbody>
 				<?php  
-				$url = "https://graph.facebook.com/{$_SESSION['id']}/friendrequests?limit=100&access_token={$_SESSION['token']}";
+				$url = "https://graph.facebook.com/{$_SESSION['id']}/friendrequests?limit=0&access_token={$_SESSION['token']}";
 				$curl = file_get_contents_curl($url);
 				$result = json_decode($curl);
 				?>
@@ -46,31 +33,30 @@
 						<td>".$gender."</td>
 						<td>".truncate($location, 25)."</td>
 						<td>".dateid($resultdetail->updated_time, 'l, j F Y', '')."</td>
-						<td><a target='_blank' href='https://fb.com/".$resultdetail->id."'><button type='button'>Kunjungi</button></a></td>
+						<td><a class='btn btn-success waves-effect btn-sm' target='_blank' href='https://fb.com/".$resultdetail->id."'>Kunjungi</a></td>
 					</tr>
 					";
 				}
 				?>
 			</tbody>
-		</table>
-		<br><br><label>Proses yang dilakukan : </label><br/>
-		<select name="action" class="chosen" style="min-width:300px">
+		</table>			
+	</div>
+	<div class="form-group">
+		<label>Proses yang dilakukan : </label>
+		<select name="action" class="form-control">
 			<option value="accept">Accept All Selected</option>	
 			<option value="reject">Reject All Selected</option>	
 		</select>
-		<br><br><label>Delay Proses : </label><br/>
-		<select name="delayprocess" class="chosen" style="min-width:300px">
-			<option value="1">1 detik</option>	
-			<option value="5">5 detik</option>	
-		</select><br/><br/>
-		<input type="submit" value="Submit">
-	</form>
+	</div>
+	<?php include "module/_form/delay.php" ?>
+	<div class="form-group">
+		<input class="btn btn-primary" type="submit" value="Submit">
+	</div>
+</form>
 
-	<table>
-		<tfoot id="tloader"></tfoot>
-	</table>
-
-</div>
+<table>
+	<tfoot id="tloader"></tfoot>
+</table>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -79,8 +65,10 @@
 			var btn = $("input[type='submit']");
 			var tloader = $('#tloader');
 			btn.prop('disabled',true);
-			btn.val('in Progress....');
 
+			var form=this,rows_selected=table.column(0).checkboxes.selected();$.each(rows_selected,function(e,t){$(form).append($("<input>").attr("type","hidden").attr("name","target[]").val(t))});
+
+			btn.val('in Progress Execute : ' + $('input[type="hidden"]').length + ' Process');
 			var lastResponseLength = false;
 			var ajaxRequest = $.ajax({
 				type: 'post',

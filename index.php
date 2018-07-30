@@ -5,61 +5,20 @@ include "config/settings.php";
 <html>
 <head>
 
-	<meta charset='utf-8'/>
-	<meta content='IE=edge' http-equiv='X-UA-Compatible'/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-	<title><?= $title ?></title>   
-
-	<meta name="description" content="<?= $settings['desc'] ?>"/>
-	<meta name="author" content="<?= $settings['author'] ?>"/>
-	<link rel="base" href="<?= $baseurl ?>"/>
-	<link rel="canonical" href="<?= $baseurl ?>"/>
-	<!-- <meta rel="sitemap" type="application/xml" content="http://meusite.com.br/sitemap.xml"/> -->
-	<meta name="robots" content="index/follow"/>
-	<meta name="googlebot" content="index/follow"/>
-	<meta name="theme-color" content="#FF4455"/>
-	<meta name="msapplication-navbutton-color" content="#FF4455"/>
-	<meta name="apple-mobile-web-app-status-bar-style" content="#FF4455"/>
-	<!-- Schema.org markup for Google+ -->
-	<meta itemprop="name" content="<?= $title ?>"/>
-	<meta itemprop="description" content="<?= $settings['desc'] ?>"/>
-	<meta itemprop="image" content="<?= $baseurl ?>assets/img/fb-tools.png"/>
-	<!-- markup for facebook -->
-	<meta property="og:type" content="website"/>
-	<meta property="og:title" content="<?= $title ?>"/>
-	<meta property="og:url" content="<?= $baseurl ?>"/>
-	<meta property="og:site_name" content="<?= $settings['title'] ?>"/>
-	<meta property="og:image" content="<?= $baseurl ?>assets/img/fb-tools.png"/>
-	<meta property="og:description" content="<?= $settings['desc'] ?>"/>
-	<meta property="og:locale" content="en_US"/>
-	<!-- <meta property="fb:app_id" content="5349"/>
-	<meta property="fb:admins" content="123456789"/> -->
-	<!-- markup for twitter -->
-	<meta name="twitter:card" content="summary"/>
-	<meta name="twitter:title" content="<?= $title ?>"/>
-	<meta name="twitter:description" content="<?= $settings['desc'] ?>"/>
-	<meta name="twitter:creator" content="<?= $settings['author'] ?>"/>
-	<meta name="twitter:image" content="<?= $baseurl ?>assets/img/fb-tools.png"/>
-	<!-- JSON-LD - structured data markup Google Search -->
-	<script type="application/ld+json">{
-		"@context": "http://schema.org",
-		"@type": "WebSite",
-		"name": "<?= $settings['title'] ?>",
-		"alternateName": "<?= $settings['title'] ?>",
-		"url": "<?= $baseurl ?>"}
-	</script>
-
-	<link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css"/>
-	<link rel="stylesheet" href="assets/css/main.css"/>
+	<?php include "template/meta.php" ?>
+	<?php include "template/title.php" ?>
+	
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-material-indigo@1.7.2/css/style.css"/>
 
 	<!-- dataTables -->
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
-	<link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/css/dataTables.checkboxes.css" rel="stylesheet" />
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="assets/css/main.css"/>
+
+	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 	<script>window.lazyScripts=[]</script>
 
 	<!-- custom head -->
@@ -87,10 +46,10 @@ include "config/settings.php";
 					<hgroup class="introduce">
 						<?php if (!empty($_SESSION['masuk'])): ?>
 							<h5 class="nickname"><?= $_SESSION['name'] ?></h5>
-							<a href="javascript:;" class="mail"><?= $_SESSION['id'] ?></a>
+							<a href="https://fb.com/<?= $_SESSION['id'] ?>" class="mail"><?= $_SESSION['id'] ?></a>
 						<?php else: ?>
 							<h5 class="nickname"><?= $settings['title']; ?></h5>
-							<a href="javascript:;" class="mail"><?= $settings['desc'] ?></a>
+							<a target="_blank" href="javascript:;" class="mail"><?= $settings['desc'] ?></a>
 						<?php endif ?>
 					</hgroup>
 				</div>
@@ -99,117 +58,7 @@ include "config/settings.php";
 
 				<!-- nav#blogger -->
 				<ul class="nav">
-
-					<?php if (!empty($_SESSION['masuk'])): ?>
-						<li class="waves-block waves-effect">
-							<a href="./">
-								<i class="icon icon-lg icon-cog"></i>
-								Dashboard
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=massdeletestatus">
-								<i class="icon icon-lg icon-plus"></i>
-								Mass Delete Status
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=bomlike">
-								<i class="icon icon-lg icon-plus"></i>
-								Bom Like
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=addfriend">
-								<i class="icon icon-lg icon-plus"></i>
-								Add Friend
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=massunfriend">
-								<i class="icon icon-lg icon-plus"></i>
-								Mass Unfriend
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=friendrequest">
-								<i class="icon icon-lg icon-plus"></i>
-								Friend Request
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=joingroup">
-								<i class="icon icon-lg icon-plus"></i>
-								Join Group
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=massleavegroup">
-								<i class="icon icon-lg icon-plus"></i>
-								Mass Leave Group
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=massdeletepostgroup">
-								<i class="icon icon-lg icon-plus"></i>
-								Mass Delete Post Group
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=masscomment">
-								<i class="icon icon-lg icon-plus"></i>
-								Mass Comment
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=profileguard">
-								<i class="icon icon-lg icon-plus"></i>
-								Profile Guard
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=botreaction">
-								<i class="icon icon-lg icon-plus"></i>
-								Bot Reaction
-							</a>
-						</li> 	
-						<!-- <li class="waves-block waves-effect">
-							<a href="?module=botpostgroup">
-								<i class="icon icon-lg icon-plus"></i>
-								Bot Post Group
-							</a>
-						</li> 			 -->		
-					<?php else: ?>
-						<li class="waves-block waves-effect">
-							<a href="./">
-								<i class="icon icon-lg icon-user"></i>
-								Dashboard
-							</a>
-						</li> 
-						<li class="waves-block waves-effect">
-							<a href="?module=masuk">
-								<i class="icon icon-lg icon-user"></i>
-								Masuk
-							</a>
-						</li> 
-					<?php endif ?>
-
-					<li class="waves-block waves-effect">
-						<a href="?module=laporan">
-							<i class="icon icon-lg icon-clock-o"></i>
-							Laporan Cron
-						</a>
-					</li>
-
-					<?php if (!empty($_SESSION['masuk'])): ?>
-						<li class="waves-block waves-effect">
-							<a href="keluar">
-								<i class="icon icon-lg icon-sign-out"></i>
-								Keluar
-							</a>
-						</li> 
-					<?php endif ?>
-
+					<?php include "template/nav.php" ?>
 				</ul>
 
 			</div>
@@ -235,7 +84,7 @@ include "config/settings.php";
 				<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare"><i class="icon icon-lg icon-share-alt"></i></a>
 			</div>
 		</header>
-		<header class="content-header index-header">
+		<header class="content-header post-header">
 
 			<div class="container fade-scale">
 
@@ -251,91 +100,16 @@ include "config/settings.php";
 		<div class="container body-wrap fade-scale">
 
 			<!-- blogger#content -->
-			<article class="article-card article-type-post" style="min-height: 500px">
-
-				<?php  
-				if (empty($_SESSION['masuk']) AND @$_GET['module']) {
-					if ($_GET['module'] == 'laporan') {
-						include "module/laporan/index.php";
-					}elseif ($_GET['module'] == 'masuk') {
-						include "module/masuk/index.php";
-					}
-					else {
-						$_SESSION['execute'] = "<script> sweetAlert('Ehmm!', 'By Passed Detected!', 'error').then(function() {window.location = './?module=masuk'; }); </script>";
-					}
-				}else {
-					switch (@$_GET['module']) {
-
-						case 'massdeletestatus':
-						include "module/massdeletestatus/index.php";
-						break;
-
-						case 'bomlike':
-						include "module/bomlike/index.php";
-						break;
-
-						case 'addfriend':
-						include "module/addfriend/index.php";
-						break;
-
-						case 'massunfriend':
-						include "module/massunfriend/index.php";
-						break;
-
-						case 'friendrequest':
-						include "module/friendrequest/index.php";
-						break;
-
-						case 'joingroup':
-						include "module/joingroup/index.php";
-						break;
-
-						case 'massleavegroup':
-						include "module/massleavegroup/index.php";
-						break;
-
-						case 'massdeletepostgroup':
-						include "module/massdeletepostgroup/index.php";
-						break;
-
-						case 'masscomment':
-						include "module/masscomment/index.php";
-						break;
-
-						case 'profileguard':
-						include "module/profileguard/index.php";
-						break;
-
-						case 'botreaction':
-						include "module/botreaction/index.php";
-						break;
-						case 'botreactionmemperbarui':
-						include "module/botreaction/memperbarui/index.php";
-						break;
-
-						case 'botpostgroup':
-						include "module/botpostgroup/index.php";
-						break;
-
-						case 'laporan':
-						include "module/laporan/index.php";
-						break;
-
-						case 'masuk':
-						include "module/masuk/index.php";
-						break;
-
-						case 'keluar':
-						include "module/keluar/index.php";
-						break;
-
-						default:
-						include "module/dashboard/index.php";
-						break;
-					}
-				}
-				?>
-
+			<article class="post-article article-type-post">
+				<div class="post-card" style="min-height: 500px">
+					<h1 class="post-card-title">
+						<?= $title ?>
+					</h1>
+					<div class="post-meta"></div>
+					<div class="post-content">
+						<?php include "template/nav.process.php" ?>
+					</div>
+				</div>
 			</article>
 
 		</div>
@@ -356,11 +130,6 @@ include "config/settings.php";
 			<div class="bottom">
 				<p>
 					<span><?= $settings['title']; ?> &#169; 2018</span>
-					<span>
-						Made Use <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-					</span>
-					<!-- Jangan dihapus Jika tidak ingin redirect ke pembuatnya ! -->
-					<span id="kurteyki">Created By <a id="credit" rel='nofollow' href="https://fb.com/he.irfaandemmy" title="Kurteyki Team">Irfaan</a></span>
 				</p>
 			</div>
 		</footer>
@@ -380,20 +149,24 @@ include "config/settings.php";
 	</div>
 
 	<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-	<script>
-		var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
-	</script>
-
-	<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 	<!-- dataTables -->
 	<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.11/js/dataTables.checkboxes.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+	<script>
+		var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/hexo-theme-material-indigo@1.7.2/js/main.min.js"></script>
 	<script async src="assets/js/main.js"></script>
 	<script async src="assets/js/smooth.js"></script>
 

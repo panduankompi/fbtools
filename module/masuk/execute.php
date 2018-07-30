@@ -55,7 +55,7 @@ if (@$_POST['byaccount']) {
 					// JIKA CHECK DITEMUKAN DATA TIDAK DARI ULANG
 					inputjson(
 						$data[$key]->id,
-						$data[$key]->name,
+						$name,
 						$token,
 						$data[$key]->botreaction,
 						$data[$key]->botpostgroup,

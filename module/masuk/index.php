@@ -1,42 +1,31 @@
+<div class="row">
+	<div class="col-md-6">
+		<form method="post">
+			<h3>Masuk Dengan Facebook</h3>
+			<div class="form-group">
+				<input class='form-control' type="text" placeholder="Username" name="username" required/>
+			</div>
+			<div class="form-group">
+				<input class='form-control' type="password" placeholder="Password" name="password" required/>
+			</div>
+			<div class="form-group">
+				<input class='btn btn-primary' name="byaccount" type="submit" value="Submit"/>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-6">
+		<form method="post">
+			<h3>Masuk Dengan Token iPhone</h3>
+			<div class="form-group">
+			<textarea class="form-control" name="token" rows="4" placeholder="EAXXX..." required></textarea>
+			</div>
+			<div class="form-group">
+				<input class='btn btn-primary' type="submit" value="Submit"/>
+			</div>
+		</form>
+	</div>
+</div>
+
 <?php  
 include "execute.php";
 ?>
-
-<h3 class="post-title">
-	Masuk dengan Facebook
-</h3>
-<div class="post-meta">
-	<span>Masuk untuk mendapatkan token iphone, sistem tidak menyimpan password anda</span>            
-</div>
-
-<div class="post-content">
-	
-	<!-- content -->
-	<form method="post">
-		<input type="text" placeholder="Username" name="username" required style='width: 250px;'><br/><br/>
-		<input type="password" placeholder="Password" name="password" required style='width: 250px;'><br/><br/>
-		<input name="byaccount" type="submit" value="Submit">
-	</form>
-
-</div>
-
-<h3 class="post-title">
-	Masuk dengan Token Facebook
-</h3>
-<div class="post-meta">
-	<span>Masukan Token Facebook anda</span>            
-</div>
-
-<div class="post-content">
-	
-	<!-- content -->
-	<form method="post">
-		<div class="form-group">
-			<textarea name="token" rows="10" cols="100" placeholder="EAXXX..." required></textarea>
-		</div>
-
-		<input name="bytoken" type="submit" value="Submit">
-
-	</form>
-
-</div>

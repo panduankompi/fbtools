@@ -1,47 +1,43 @@
-<h3 class="post-title">
-	Bom Like Profile
-</h3>
-<div class="post-meta">
-	<span>
-		Pilih target orang yang akan anda bom like beserta maksimal prosesnya
-	</span>            
-</div>
+<form id='formbomlike' method="post">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Pilih Profile : </label>
+				<select name="people" class="form-control chosen">
+					<?php  
+					$url = "https://graph.fb.me/me/friends?access_token={$_SESSION['token']}";
 
-<div class="post-content">
+					$curl = file_get_contents_curl($url);
+					$result = json_decode($curl);
+					?>
+					<?php
+					foreach ($result->data as $row) {							
+						echo "<option value='{$row->id}'>{$row->name}</option>";
+					}
+					?>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Maksimal Proses : </label>
+				<select name="max" class="form-control">
+					<option value="1">1</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="20">20</option>
+					<option value="50">50</option>		
+				</select>
+			</div>
+			<?php include "module/_form/delay.php" ?>
+			<div class="form-group">
+				<input class="btn btn-primary" id="bomlike" name="bomlike" type="submit" value="Submit">
+			</div>
+		</div>
+	</div>
+</form>
 
-	<!-- content -->
-	<form id='formbomlike' method="post">
-		<br/><label>Pilih Profile : </label><br/>
-		<select name="people" class="chosen" style="min-width:200px">
-			<?php  
-			$url = "https://graph.fb.me/me/friends?access_token={$_SESSION['token']}";
-
-			$curl = file_get_contents_curl($url);
-			$result = json_decode($curl);
-			?>
-			<?php
-			foreach ($result->data as $row) {							
-				echo "<option value='{$row->id}'>{$row->name}</option>";
-			}
-			?>
-		</select>
-		<br/><br/><label>Maksimal Proses : </label><br/>
-		<select name="maxprocess" class="chosen" style="min-width:200px">
-			<option value="1">1</option>
-			<option value="5">5</option>
-			<option value="10">10</option>
-			<option value="20">20</option>
-			<option value="50">50</option>		
-		</select><br/><br/>
-		<input id="bomlike" name="bomlike" type="submit" value="Submit">
-	</form>
-
-	<table>
-		<tbody id="tloader"></tbody>
-	</table>
-
-
-</div>
+<table>
+	<tbody id="tloader"></tbody>
+</table>
 
 <script type="text/javascript">
 	$(document).ready(function(){

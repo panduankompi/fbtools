@@ -1,22 +1,43 @@
-# fb-tools
-Facebook Multiple Process With Programming PHP
+# FB Tools
 
-# Setting Cron pada file cron.php Min 5 Menit
+Facebook Multiple Process With One Click.
 
-## FB Tools v1.0
-Relase
+## Getting Started
 
-## Next Version
-Scrape UID
-Mass Comment
-Auto Confirm Friend
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Fiture
 
-# Catatan 
+* Mass Delete Status
+* Bom Like
+* Add Friend
+* Mass Unfriend
+* Friend Request
+* Join Group
+* Mass Leave Group
+* Mass Delete Post Group
+* Mass Comment
+* Profile Guard
+* Bot Reaction
+* Bot Post Group
 
-## Berkaitan dengan file database.json pada module :
-botreaction
-botpostgroup
-laporan
-masuk
-cron
+### Installing
+
+Coming Soon...
+
+```
+Give the example
+```
+
+## Built With
+
+* [Indigo Template by Hexo](https://github.com/yscoder/hexo-theme-indigo) - Design Front End
+* [PHP](/) - Server Side Back End
+
+## Authors
+
+* **Irfaan Programmer** - *Code Runner* - [Irfaan Programmer](https://github.com/irfaanprogrammer)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

@@ -83,7 +83,7 @@ foreach($data as $key => $row){ // LOOP DATABASE
 	if ($row->botreaction->status == 'Aktif' AND $row->botreaction->pesan == 'Aktif' or $row->botreaction->status == 'Aktif' AND $row->botreaction->pesan == 'Baru Dibuat'){
 
 		// CURL GET FEED FACEBOOK
-		$curl = file_get_contents_curl("https://graph.facebook.com/me/home?fields=id,permalink_url,story&limit={$row->botreaction_maxprocess}&access_token={$row->token}");
+		$curl = file_get_contents_curl("https://graph.facebook.com/me/home?fields=id&limit={$row->botreaction_maxprocess}&access_token={$row->token}");
 		$result = json_decode($curl);
 
 		//IF TOKEN EXPIRED
@@ -113,7 +113,7 @@ foreach($data as $key => $row){ // LOOP DATABASE
 			foreach ($result->data as $post) {
 
 				// CURL FOR REACTION POST
-				$curl = file_get_contents_curl("https://graph.facebook.com/{$post->id}/reactions?type={$row->botreaction_type}&method=post&access_token={$row->token}");
+				$curl = file_get_contents_curl("https://graph.facebook.com/{$post->id}/reactions?type={$row->botreaction->reaction}&method=post&access_token={$row->token}");
 				$result = json_decode($curl);
 
 				$botreaction = array(
@@ -131,7 +131,7 @@ foreach($data as $key => $row){ // LOOP DATABASE
 					$botreaction,
 					$row->botpostgroup,
 					$key
-					);
+					);				
 
 			}
 
