@@ -1,9 +1,7 @@
 <?php  
 include "session.php";
 include "function.php";
-
-// SET TIMEZONE 
-date_default_timezone_set('Asia/Jakarta');
+include "timezone.php";
 
 $settings['title'] = 'FB Tools';
 $settings['desc'] = 'Tools Lite Facebook';

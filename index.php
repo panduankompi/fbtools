@@ -97,7 +97,7 @@ include "config/settings.php";
 			<!-- blogger#menu navigasi -->
 		</header>
 
-		<div class="container body-wrap fade-scale">
+		<div class="container body-wrap">
 
 			<!-- blogger#content -->
 			<article class="post-article article-type-post">
