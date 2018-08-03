@@ -5,8 +5,8 @@ include "config/settings.php";
 <html>
 <head>
 
-	<?php include "template/meta.php" ?>
 	<?php include "template/title.php" ?>
+	<?php include "template/meta.php" ?>
 	
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-material-indigo@1.7.2/css/style.css"/>
@@ -81,7 +81,8 @@ include "config/settings.php";
 					</a>
 					<!-- blogger#search -->					
 				</div>
-				<a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare"><i class="icon icon-lg icon-share-alt"></i></a>
+				<a data-toggle="modal" data-target="#modalauthor" href="javascript:;" class="header-icon waves-effect waves-circle waves-light"><i class="icon icon-lg icon-question-circle"></i></a>
+				<a href="javascript:;" class="hidden header-icon waves-effect waves-circle waves-light" id="menuShare"></a>
 			</div>
 		</header>
 		<header class="content-header post-header">
@@ -105,7 +106,11 @@ include "config/settings.php";
 					<h1 class="post-card-title">
 						<?= $title ?>
 					</h1>
-					<div class="post-meta"></div>
+					<div class="post-meta">
+						<span id='busuanzi_container_page_pv' style='display:none'>
+							<i class='icon icon-eye icon-pr'></i><span id='busuanzi_value_page_pv'></span>
+						</span>
+					</div>
 					<div class="post-content">
 						<?php include "template/nav.process.php" ?>
 					</div>
@@ -163,6 +168,9 @@ include "config/settings.php";
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js'></script>
+	<script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+
 	<script>
 		var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 	</script>
@@ -175,6 +183,8 @@ include "config/settings.php";
 		echo $_SESSION['execute'];
 		unset($_SESSION['execute']);
 	}
+	
+	include "template/author.php";
 	?>
 
 </body>

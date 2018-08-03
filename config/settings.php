@@ -1,10 +1,14 @@
 <?php  
 include "session.php";
+include "i.function.php";
 include "function.php";
 include "timezone.php";
 
 $settings['title'] = 'FB Tools';
 $settings['desc'] = 'Tools Lite Facebook';
 $settings['author'] = 'Irfaan Programmer';
-$baseurl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$settings['version'] = 'v1.0';
+$baseurl = home_base_url();
+
+ob_start("sanitize_output");
 ?>

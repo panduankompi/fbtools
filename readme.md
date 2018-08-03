@@ -23,10 +23,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Coming Soon...
+Run With PHP and Apache Server
+Using XAMPP
 
 ```
-Give the example
+http://localhost/fbtools
 ```
 
 ## Built With
@@ -40,4 +41,4 @@ Give the example
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
