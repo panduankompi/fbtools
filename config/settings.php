@@ -11,5 +11,5 @@ $settings['author'] = 'Irfaan Programmer';
 $settings['version'] = 'v1.0';
 $baseurl = home_base_url();
 
-ob_start("sanitize_output");
+//ob_start("sanitize_output");
 ?>

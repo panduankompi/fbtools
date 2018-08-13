@@ -23,6 +23,15 @@ function inputjson($id = "", $name = "", $token = "", $botreaction = "", $botpos
 
 }
 
+function sweetalert($message,$type){
+
+	return $_SESSION['execute'] = "
+	<script> 
+		sweetAlert('Message !', '".$message."', '".$type."');
+	</script>";
+
+}
+
 function spin($pass){
 	$mytext = $pass;
 	while(inStr("}",$mytext)){

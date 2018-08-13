@@ -1,7 +1,7 @@
 <form class='formtablecheckbox' method="post">
 	<div class="form-group">
 		<label>Pilih Status : </label>
-		<table class="tablecheckbox">
+		<table class="tablecheckbox_desc">
 			<thead>
 				<tr>
 					<th></th>
@@ -12,24 +12,24 @@
 			</thead>
 			<tbody>
 				<?php  
-				$url = "https://graph.facebook.com/me/statuses?access_token={$_SESSION['token']}";
+				// https://graph.facebook.com/me/statuses
+				// for statuses <td style='width:5%'>".$_SESSION['id']."_".$row->id."</td>
+				$url = "https://graph.facebook.com/me/posts?access_token={$_SESSION['token']}";
 
 				$curl = file_get_contents_curl($url);
 				$result = json_decode($curl);
 				?>
 				<?php
 				foreach ($result->data as $row) {		
-					if (@$row->message != '') {
-						$message = !empty($row->message) ? $row->message : '';
-						echo "
-						<tr>
-							<td style='width:5%'>".$_SESSION['id']."_".$row->id."</td>
-							<td>".date('Y-m-d H:i:s', strtotime($row->updated_time))."</td>
-							<td>".strip_tags(truncate($message,50))."</td>
-							<td><a class='btn btn-success waves-effect btn-sm' target='_blank' href='https://fb.com/".$row->id."'>Kunjungi</a></td>
-						</tr>
-						";
-					}
+					$message = !empty($row->message) ? $row->message : 'Photo or Share Link';
+					echo "
+					<tr>
+						<td style='width:5%'>".$row->id."</td>
+						<td>".date('Y-m-d H:i:s', strtotime($row->updated_time))."</td>
+						<td>".strip_tags(truncate($message,50))."</td>
+						<td><a class='btn btn-success waves-effect btn-sm' target='_blank' href='https://fb.com/".$row->id."'>Kunjungi</a></td>
+					</tr>
+					";
 				}
 				?>
 			</tbody>
@@ -40,23 +40,30 @@
 	</div>
 </form>
 
-<table>
-	<tbody id="tloader"></tbody>
-</table>
+<div class="progress" style="display: none;">
+	<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0;background-color: #3f51b5!important">
+		<span id="fullResponse"></span>
+	</div>
+</div>
 
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.formtablecheckbox').on('submit', function(e){
 			e.preventDefault();
 			var btn = $("input[type='submit']");
-			var tloader = $('#tloader');
+			var hidden = $("input[type='hidden']");
+			var progressbar = $('.progress');
+
+
+			var form=this,rows_selected=table_desc.column(0).checkboxes.selected();$.each(rows_selected,function(e,t){
+				$(form).append($("<input>").attr("type","hidden").attr("name","target[]").val(t))
+			});
+
 			btn.prop('disabled',true);
+			btn.val('On Progress...');
 
-			var form=this,rows_selected=table.column(0).checkboxes.selected();$.each(rows_selected,function(e,t){$(form).append($("<input>").attr("type","hidden").attr("name","target[]").val(t))});
-
-			btn.val('in Progress Execute : ' + $('input[type="hidden"]').length + ' Process');
 			var lastResponseLength = false;
-			var ajaxRequest = $.ajax({
+			$.ajax({
 				type: 'post',
 				url : 'massdeletestatus',
 				data : $(".formtablecheckbox").serialize(),
@@ -65,9 +72,9 @@
 				xhrFields: {
 					onprogress: function(e)
 					{
-						var progressResponse;
-						var response = e.currentTarget.response;
-						if(lastResponseLength === false)
+						progressbar.fadeIn();
+						var response = event.currentTarget.response;
+						if(lastResponseLength == false && response.length == 1)
 						{
 							progressResponse = response;
 							lastResponseLength = response.length;
@@ -78,27 +85,21 @@
 							lastResponseLength = response.length;
 						}
 						var parsedResponse = JSON.parse(progressResponse);
-						tloader.fadeIn().html('<tr><td>'+parsedResponse.process+'</td></tr>');
+						if (parsedResponse.message == 'error') {
+							$('#fullResponse').text(parsedResponse.message);
+							sweetAlert('Ehmm', parsedResponse.code , 'error');
+							btn.prop('disabled',false);
+							btn.val('Submit');
+						}else if (parsedResponse.message == 'Complete') {
+							$('#fullResponse').text(parsedResponse.message);
+							sweetAlert('Berhasil Memproses Permintaan!', 'Sukses : ' + parsedResponse.success + ' | Gagal : ' + parsedResponse.error , 'success').then(function()  {window.location = './?module=<?= $_GET['module'] ?>'; });
+						}else{							
+							$('#fullResponse').text(parsedResponse.message);
+						}
+						$('.progress-bar').css('width', parsedResponse.progress + '%');
 					}
 				}
 			});
-
-			ajaxRequest.done(function(data)
-			{
-				btn.prop('disabled',false);
-				btn.val('Submit');
-				$("input[type='hidden']").remove();
-				tloader.fadeOut();
-			});
-
-			ajaxRequest.fail(function(error){
-				var result = JSON.stringify(error, null, 4);
-				btn.prop('disabled',false);
-				btn.val('Submit');
-				$("input[type='hidden']").remove();
-				tloader.fadeOut();
-			});
-
 
 		})
 	})

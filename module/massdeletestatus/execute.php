@@ -5,17 +5,24 @@ require_once "../../config/session.php";
 
 $token = @$_SESSION['token'];
 $target = @$_POST['target'];
+$target_count = count($target);
+$count_kali = 100 / $target_count;
+
+if ($target == 0) {
+	$response = array('message' => 'error', 'progress' => 100, 'code' => 'Silahkan Pilih Data Untuk Di proses !');
+	echo json_encode($response);
+	exit;
+}
 
 $success = 0;
 $error = 0;
+$nomor = 0;
+
+
 foreach ($target as $key => $postid) {
 
-	$jsonresult = array('process' => "Sedang Menghapus Status dengan id".' : '. $postid . " <img src='data:image/gif;base64,R0lGODlhKwALAPAAAKrD2AAAACH5BAEKAAEAIf4VTWFkZSBieSBBamF4TG9hZC5pbmZvACH/C05FVFNDQVBFMi4wAwEAAAAsAAAAACsACwAAAjIMjhjLltnYg/PFChveVvPLheA2hlhZoWYnfd6avqcMZy1J14fKLvrEs/k+uCAgMkwVAAAh+QQBCgACACwAAAAAKwALAIFPg6+qw9gAAAAAAAACPRSOKMsSD2FjsZqEwax885hh3veMZJiYn8qhSkNKcBy4B2vNsa3pJA6yAWUUGm9Y8n2Oyk7T4posYlLHrwAAIfkEAQoAAgAsAAAAACsACwCBT4OvqsPYAAAAAAAAAj1UjijLAg9hY6maalvcb+IPBhO3eeF5jKTUoKi6AqYLwutMYzaJ58nO6flSmpisNcwwjEfK6fKZLGJSqK4AACH5BAEKAAIALAAAAAArAAsAgU+Dr6rD2AAAAAAAAAJAVI4oy5bZGJiUugcbfrH6uWVMqDSfRx5RGnQnxa6p+wKxNpu1nY/9suORZENd7eYrSnbIRVMQvGAizhAV+hIUAAA7'/>");
-	echo json_encode($jsonresult);	
-	sleep(1);	
-
 	$url = "https://graph.facebook.com/{$postid}/?method=DELETE&access_token={$token}";
-	$curl = file_get_contents_curl($url,'',"DELETE");
+	$curl = file_get_contents_curl($url);
 	$result = json_decode($curl);
 
 	if ($result == 'true') {
@@ -25,12 +32,19 @@ foreach ($target as $key => $postid) {
 	}
 
 	sleep(1);
-	$jsonresult = array('result' => $result_progress, 'process' => "Selesai Menghapus Status dengan id".' : '. $postid . " <img src='data:image/gif;base64,R0lGODlhKwALAPAAAKrD2AAAACH5BAEKAAEAIf4VTWFkZSBieSBBamF4TG9hZC5pbmZvACH/C05FVFNDQVBFMi4wAwEAAAAsAAAAACsACwAAAjIMjhjLltnYg/PFChveVvPLheA2hlhZoWYnfd6avqcMZy1J14fKLvrEs/k+uCAgMkwVAAAh+QQBCgACACwAAAAAKwALAIFPg6+qw9gAAAAAAAACPRSOKMsSD2FjsZqEwax885hh3veMZJiYn8qhSkNKcBy4B2vNsa3pJA6yAWUUGm9Y8n2Oyk7T4posYlLHrwAAIfkEAQoAAgAsAAAAACsACwCBT4OvqsPYAAAAAAAAAj1UjijLAg9hY6maalvcb+IPBhO3eeF5jKTUoKi6AqYLwutMYzaJ58nO6flSmpisNcwwjEfK6fKZLGJSqK4AACH5BAEKAAIALAAAAAArAAsAgU+Dr6rD2AAAAAAAAAJAVI4oy5bZGJiUugcbfrH6uWVMqDSfRx5RGnQnxa6p+wKxNpu1nY/9suORZENd7eYrSnbIRVMQvGAizhAV+hIUAAA7'/>");
-	echo json_encode($jsonresult);	
+	$processed = ceil($count_kali * $nomor);
+	$response = array('message' => $processed . '% complete. execute post id : ' . $postid, 'progress' => $processed);
+	echo json_encode($response);	
+	flush();
 
+	if ($target_count === 1) {
+		sleep(1);
+	}
+
+	$nomor++;
 }
 
 sleep(1);
-$jsonresult = array('process' => "<script>sweetAlert('Berhasil Memproses Permintaan!', 'Success : ".$success." | Error : ".$error."', 'success').then(function() {window.location = './?module=massdeletestatus'; })</script>");
-echo json_encode($jsonresult);
+$response = array('message' => 'Complete', 'progress' => 100, 'success' => $success, 'error' => $error);
+echo json_encode($response);
 ?>

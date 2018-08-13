@@ -23,7 +23,9 @@ if (@$_POST['byaccount']) {
 	$message = json_decode($response);
 
 	if (@$message->error_msg) {
-		$_SESSION['execute'] = "<script> sweetAlert('Ehmm!', '".$message->error_msg."', 'error'); </script>";
+		sweetalert($message->error_msg,'error');
+		header("Location: ./?module=masuk");
+		exit;
 	}else {
 		
 		// CURL 
@@ -60,8 +62,9 @@ if (@$_POST['byaccount']) {
 						$data[$key]->botreaction,
 						$data[$key]->botpostgroup,
 						$key
-						);			
-					$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Memperbarui Data', 'success').then(function() {window.location = './'; }); </script>";
+						);	
+
+					sweetalert('Berhasil Disimpan! Memperbarui Data','success');		
 				}
 			}
 
@@ -72,7 +75,7 @@ if (@$_POST['byaccount']) {
 					$name,
 					$token
 					);
-				$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Anggota Baru #2', 'success').then(function() {window.location = './'; }); </script>";
+				sweetalert('Berhasil Disimpan! Anggota Baru #2','success');		
 			}
 		}else {		
 			inputjson(
@@ -80,8 +83,11 @@ if (@$_POST['byaccount']) {
 				$name,
 				$token
 				);
-			$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Anggota Baru #1', 'success').then(function() {window.location = './'; }); </script>";
+			sweetalert('Berhasil Disimpan! Anggota Baru #1','success');		
 		}
+
+		header("Location: ./");
+		exit;
 
 	}
 
@@ -97,7 +103,9 @@ if (@$_POST['byaccount']) {
 
 	// CHECK TOKEN VALIDATION
 	if (@$result->error->code == "190") {
-		$_SESSION['execute'] = "<script> sweetAlert('Ehmm!', '".$result->error->message."', 'error'); </script>";
+		sweetalert($result->error->message,'error');		
+		header("Location: ./?module=masuk");
+		exit;
 	}else {	
 		if ($checkiphone == '6628568379') {
 			// CURL
@@ -134,7 +142,7 @@ if (@$_POST['byaccount']) {
 							$data[$key]->botpostgroup,
 							$key
 							);	
-						$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Memperbarui Data', 'success').then(function() {window.location = './'; }); </script>";
+						sweetalert('Berhasil Disimpan! Memperbarui Data','success');		
 					}
 				}
 
@@ -145,7 +153,7 @@ if (@$_POST['byaccount']) {
 						$name,
 						$token
 						);
-					$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Anggota Baru #2', 'success').then(function() {window.location = './'; }); </script>";
+					sweetalert('Berhasil Disimpan! Anggota Baru #2','success');		
 				}
 			}else {		
 				inputjson(
@@ -153,11 +161,16 @@ if (@$_POST['byaccount']) {
 					$name,
 					$token
 					);
-				$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Anggota Baru #1', 'success').then(function() {window.location = './'; }); </script>";
+				sweetalert('Berhasil Disimpan! Anggota Baru #1','success');		
 			}
 
+			header("Location: ./");
+			exit;
+
 		}else {
-			$_SESSION['execute'] = "<script> sweetAlert('Ehmm!', 'Bukan Token Iphone Nih!', 'error'); </script>";
+			sweetalert('Bukan Token Iphone Nih!','error');	
+			header("Location: ./?module=masuk");
+			exit;
 		}
 	}
 
