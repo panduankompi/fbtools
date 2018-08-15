@@ -92,6 +92,7 @@
 						}else if (parsedResponse.message == 'Complete') {
 							$('#fullResponse').text(parsedResponse.message);
 							sweetAlert('Berhasil Memproses Permintaan!', 'Sukses : ' + parsedResponse.success + ' | Gagal : ' + parsedResponse.error , 'success').then(function()  {window.location = './?module=<?= $_GET['module'] ?>'; });
+							hidden.remove();
 						}else{							
 							$('#fullResponse').text(parsedResponse.message);
 						}

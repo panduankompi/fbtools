@@ -11,6 +11,10 @@ if (empty($_SESSION['masuk']) AND @$_GET['module']) {
 }else {
 	switch (@$_GET['module']) {
 
+		case 'masspost':
+		include "module/masspost/index.php";
+		break;
+
 		case 'massdeletestatus':
 		include "module/massdeletestatus/index.php";
 		break;

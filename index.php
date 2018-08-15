@@ -14,14 +14,17 @@ include "config/settings.php";
 
 	<!-- dataTables -->
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.min.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" />
 
 	<link rel="stylesheet" href="assets/css/main.css"/>
 
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 	<script>window.lazyScripts=[]</script>
 
-	<!-- custom head -->
+
 </head>
 <body itemscope='itemscope' itemtype='http://schema.org/WebPage'>
 	<meta itemprop="accessibilityControl" content="fullKeyboardControl"/>
@@ -171,15 +174,17 @@ include "config/settings.php";
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js'></script>
-	<script type='text/javascript'>hljs.initHighlightingOnLoad();</script>
+	<script src="https://min.gitcdn.link/repo/irfaanprogrammer/bloggercode/master/js/smoothscroll.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+	
 	<script>
 		var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+		$('#datetimepicker').datetimepicker();
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/hexo-theme-material-indigo@1.7.2/js/main.min.js"></script>
-	<script async src="assets/js/main.js"></script>
-	<script async src="assets/js/smooth.js"></script>
+	<script src="assets/js/main.js"></script>
+
 
 	<?php  
 	include "template/author.php";

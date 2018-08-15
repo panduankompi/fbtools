@@ -1,4 +1,4 @@
 <?php  
 include "botreaction.php";
-//include "botpostgroup.php";
+include "botpostgroup.php";
 ?>

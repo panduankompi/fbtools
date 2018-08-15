@@ -1,8 +1,10 @@
 <?php  
 if (@$_POST['botpostgroup']) {
 
-	if (empty($_POST['target'])) {
-		$_SESSION['execute'] = "<script> sweetAlert('Hemm!', 'Grup belum dipilih!', 'error'); </script>";
+	if (empty($_POST['target']) AND !empty($_POST['status'])) {
+		sweetalert('Grup belum dipilih!','error');		
+		header("Location: ./?module=botpostgroup");
+		exit;		
 	}else {
 
 		$id = $_SESSION['id'];
@@ -42,7 +44,9 @@ if (@$_POST['botpostgroup']) {
 						$key
 						);	
 
-					$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Update Data', 'success').then(function() {window.location = './?module=laporan'; }); </script>";
+					sweetalert('Berhasil Disimpan! Memperbarui Data','success');	
+					header("Location: ./?module=laporan");
+					exit;						
 				}
 			}
 		}

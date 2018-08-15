@@ -1,4 +1,3 @@
-
 <?php if (empty($_SESSION['masuk'])): ?>
 	<p>Fb Tools ini ditujukan untuk mempermudah pengguna facebook untuk melakukan sesuatu secara sekaligus, misalnya menghapus pertemanan, keluar dari grup, dan lain sebagainya :</p>
 
@@ -19,17 +18,14 @@
 	</p>
 	<a class="btn btn-primary" href="?module=masuk">Masuk Untuk Menggunakan Tools</a>
 <?php else: ?>
-<style type="text/css">.btn:not(.btn-block) { margin-bottom:10px; }</style>
+	<style type="text/css">.btn:not(.btn-block) { margin-bottom:10px; }</style>
 
-<div class="row">
-	<div class="col-md-4">	
-		<a href="/" class="btn btn-primary btn-lg col-md-12" role="button"><span class="icon icon-star"></span> <br/>Next Soon</a>
+	<div class="alert alert-info alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<strong>Selamat Datang di <?= $settings['title']; ?> !</strong> Gunakan Tools Dengan Bijak.
 	</div>
-	<div class="col-md-4">	
-		<a href="/" class="btn btn-warning btn-lg col-md-12" role="button"><span class="icon icon-star"></span> <br/>Next Soon</a>
-	</div>
-	<div class="col-md-4">	
-		<a href="/" class="btn btn-danger btn-lg col-md-12" role="button"><span class="icon icon-star"></span> <br/>Next Soon</a>
-	</div>
-</div>
+
+	<img src="<?= $baseurl ?>assets/img/images.png" width='100%'>
 <?php endif ?>

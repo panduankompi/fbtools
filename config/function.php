@@ -23,12 +23,19 @@ function inputjson($id = "", $name = "", $token = "", $botreaction = "", $botpos
 
 }
 
-function sweetalert($message,$type){
+function sweetalert($message,$type,$redirect = false){
 
-	return $_SESSION['execute'] = "
-	<script> 
-		sweetAlert('Message !', '".$message."', '".$type."');
-	</script>";
+	if ($redirect !== false) {
+		return $_SESSION['execute'] = "
+		<script> 
+			sweetAlert('Message !', '".$message."', '".$type."').then(function() {window.location = './".$redirect."'; });
+		</script>";
+	}else {
+		return $_SESSION['execute'] = "
+		<script> 
+			sweetAlert('Message !', '".$message."', '".$type."');
+		</script>";
+	}
 
 }
 

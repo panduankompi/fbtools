@@ -2,6 +2,10 @@
 // Title Declaration
 switch (@$_GET['module']) {
 
+	case 'masspost':
+	$title = "Mass Post ". $type = !empty($_GET['type']) ? ucfirst($_GET['type']) : '';
+	break;
+
 	case 'massdeletestatus':
 	$title = "Mass Delete Status";
 	break;
@@ -11,7 +15,7 @@ switch (@$_GET['module']) {
 	break;
 
 	case 'addfriend':
-	$title = "Add Friend ". $groupname = !empty($_GET['groupname']) ? "From Group <b>".$_GET['groupname']."</b>" : '';
+	$title = "Add Friend ". $groupname = !empty($_GET['groupname']) ? "From Group ".$_GET['groupname'] : '';
 	break;
 
 	case 'massunfriend':
@@ -23,7 +27,7 @@ switch (@$_GET['module']) {
 	break;
 
 	case 'joingroup':
-	$title = "Join Grup". $q = !empty($_GET['q']) ? " Hasil Query : <b>".$_GET['q']."</b>" : 'From Search Result';
+	$title = "Join Grup". $q = !empty($_GET['q']) ? " Hasil Query : ".$_GET['q'] : 'From Search Result';
 	break;
 
 	case 'massleavegroup':
@@ -31,7 +35,7 @@ switch (@$_GET['module']) {
 	break;
 
 	case 'massdeletepostgroup':
-	$title = "Mass Delete Post Group ". $groupname = !empty($_GET['groupname']) ? "<b>".$_GET['groupname']."</b>" : '';;
+	$title = "Mass Delete Post Group ". $groupname = !empty($_GET['groupname']) ? $_GET['groupname'] : '';;
 	break;
 
 	case 'masscomment':

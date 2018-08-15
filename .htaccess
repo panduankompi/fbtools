@@ -4,6 +4,7 @@ RewriteEngine On
 
 RewriteRule ^keluar?$ ./module/keluar/execute.php
 
+RewriteRule ^masspost?$ ./module/masspost/execute.php
 RewriteRule ^massdeletestatus?$ ./module/massdeletestatus/execute.php
 RewriteRule ^bomlike?$ ./module/bomlike/execute.php
 RewriteRule ^addfriend?$ ./module/addfriend/execute.php

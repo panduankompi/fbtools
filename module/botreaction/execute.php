@@ -36,7 +36,10 @@ if (@$_POST['saveaccount']) {
 					$key
 					);	
 
-				$_SESSION['execute'] = "<script> sweetAlert('Hore!', 'Berhasil Disimpan! Update Data', 'success').then(function() {window.location = './?module=laporan'; }); </script>";
+
+				sweetalert('Berhasil Disimpan! Memperbarui Data','success');
+				header("Location: ./?module=laporan");
+				exit;
 			}
 		}
 	}

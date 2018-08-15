@@ -86,6 +86,7 @@
 			var btn = $("input[type='submit']");
 			var hidden = $("input[type='hidden']");
 			var progressbar = $('.progress');
+			hidden.remove();
 
 			var form=this,rows_selected=table_asc.column(0).checkboxes.selected();$.each(rows_selected,function(e,t){
 				$(form).append($("<input>").attr("type","hidden").attr("name","target[]").val(t))

@@ -6,6 +6,12 @@
 		</a>
 	</li> 
 	<li class="waves-block waves-effect">
+		<a href="?module=masspost">
+			<i class="icon icon-lg icon-plus"></i>
+			Mass Post
+		</a>
+	</li> 		
+	<li class="waves-block waves-effect">
 		<a href="?module=massdeletestatus">
 			<i class="icon icon-lg icon-plus"></i>
 			Mass Delete Status
@@ -71,12 +77,12 @@
 			Bot Reaction
 		</a>
 	</li> 	
-	<!-- <li class="waves-block waves-effect">
+	<li class="waves-block waves-effect">
 		<a href="?module=botpostgroup">
-		<i class="icon icon-lg icon-plus"></i>
-		Bot Post Group
+			<i class="icon icon-lg icon-plus"></i>
+			Bot Post Group
 		</a>
-	</li> 			 -->		
+	</li> 					
 <?php else: ?>
 	<li class="waves-block waves-effect">
 		<a href="./">
