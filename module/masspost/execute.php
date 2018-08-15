@@ -62,6 +62,6 @@ foreach ($target as $targetid) {
 }
 
 sleep(1);
-$response = array('message' => 'Complete', 'progress' => 100, 'success' => json_encode($result), 'error' => $error);
+$response = array('message' => 'Complete', 'progress' => 100, 'success' => $success, 'error' => $error);
 echo json_encode($response);
 ?>
